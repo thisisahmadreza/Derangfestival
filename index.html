@@ -258,7 +258,7 @@
             margin-bottom: 0;
         }
 
-        /* Slideshow */
+        /* Slideshow با انیمیشن تایپ جدید */
         .slideshow-container {
             position: relative;
             height: 100vh;
@@ -276,17 +276,8 @@
             background: linear-gradient(135deg, rgba(35,155,167,0.75) 0%, rgba(225,170,54,0.35) 100%);
             z-index: 1;
         }
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-            background: transparent;
-        }
-        .slide.active {
-            opacity: 1;
-        }
+        
+        /* محتوای ثابت اسلایدشو */
         .slide-content {
             position: absolute;
             top: 50%; left: 50%;
@@ -297,30 +288,40 @@
             max-width: 800px;
             padding: 0 20px;
         }
-        .slide-title {
-            font-size: 3.5rem;
-            font-weight: 900;
+        .slide-title-image {
+            max-width: 340px;
+            width: 100%;
+            height: auto;
             margin-bottom: 20px;
-            color: var(--accent);
-            letter-spacing: 1px;
-            text-shadow: 0 2px 10px rgba(35,155,167,0.16);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
-        	.slide-title-image {
-  	  max-width: 340px;
-   	 width: 100%;
-  	  height: auto;
-   	 margin-bottom: 20px;
-  	  display: block;
-  	  margin-left: auto;
-   	 margin-right: auto;
-	}
+        
+        /* متن متغیر با انیمیشن تایپ */
         .slide-description {
             font-size: 1.25rem;
             line-height: 1.8;
             margin-bottom: 30px;
             color: var(--bg-main);
             text-shadow: 0 2px 8px var(--primary);
+            min-height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+        
+        .typewriter-text {
+            border-left: 2px solid var(--accent);
+            padding-left: 5px;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { border-color: var(--accent); }
+            51%, 100% { border-color: transparent; }
+        }
+        
         .slide-btn,
         .action-btn {
             text-transform: uppercase;
@@ -367,12 +368,10 @@
             }
         }
         @media (max-width: 768px) {
-            .slide-title { font-size: 2.1rem; }
             .slide-description { font-size: 1.04rem; }
             .slide-btn, .action-btn { font-size: 1.08rem; padding: 15px 30px;}
         }
         @media (max-width: 525px) {
-            .slide-title { font-size: 1.32rem; }
             .slide-description { font-size: 0.93rem; }
             .slide-content { padding: 0 2vw; }
             .slide-btn, .action-btn { font-size: 1rem; padding: 11px 10vw;}
@@ -471,6 +470,15 @@
             max-width: 720px;
             margin: 0 auto 55px;
             color: var(--text);
+        }
+
+        .intro-text-f {
+            font-size: 1.1rem;
+            line-height: 2;
+            max-width: 720px;
+            margin: 0 auto 55px;
+            color: #ffffff;
+text-align: center;
         }
 
         /* تایم‌لاین داخل بخش درباره رویداد */
@@ -632,7 +640,7 @@
         }
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 28px;
             max-width: 1100px;
             margin: 0 auto;
@@ -874,28 +882,14 @@
         </ul>
     </nav>
 
-    <!-- Slideshow -->
+    <!-- Slideshow با انیمیشن تایپ جدید -->
     <section id="home" class="slideshow-container">
-        <div class="slide active">
-            <div class="slide-content">
-                <img src="https://raw.githubusercontent.com/thisisahmadreza/Derangfestival/refs/heads/main/derang-3-2-logo.png" alt="عنوان رویداد" class="slide-title-image" />
-                <p class="slide-description">جایی که خلاقیت با نوآوری ملاقات می‌کند. در این رویداد، دانشجویان فرصت دارند آثار هنری خود را به نمایش بگذارند و با دیگر هنرمندان ارتباط برقرار کنند.</p>
-                <a href="#about" class="slide-btn btn btn-white btn-animated">کشف کنید</a>
-            </div>
-        </div>
-        <div class="slide">
-            <div class="slide-content">
-                <img src="https://raw.githubusercontent.com/thisisahmadreza/Derangfestival/refs/heads/main/derang-3-2-logo.png" alt="عنوان رویداد" class="slide-title-image" />
-                <p class="slide-description">ترکیبی منحصر به فرد از هنرهای سنتی و مدرن. از نقاشی و مجسمه‌سازی تا هنرهای دیجیتال و تعاملی، همه چیز را در اینجا خواهید یافت.</p>
-                <a href="#categories" class="slide-btn btn btn-white btn-animated">دسته‌بندی آثار</a>
-            </div>
-        </div>
-        <div class="slide">
-            <div class="slide-content">
-                <img src="https://raw.githubusercontent.com/thisisahmadreza/Derangfestival/refs/heads/main/derang-3-2-logo.png" alt="عنوان رویداد" class="slide-title-image" />
-                <p class="slide-description">همین حالا عضو جامعه هنرمندان جوان شوید. ثبت نام رایگان و فرصت برابر برای همه دانشجویان در تمام رشته‌های هنری.</p>
-                <a href="#register" class="slide-btn btn btn-white btn-animated">ثبت نام کنید</a>
-            </div>
+        <div class="slide-content">
+            <img src="https://raw.githubusercontent.com/thisisahmadreza/Derangfestival/refs/heads/main/derang-3-2-logo.png" alt="عنوان رویداد" class="slide-title-image" />
+            <p class="slide-description">
+                <span class="typewriter-text" id="typewriterText"></span>
+            </p>
+            <a href="#about" class="slide-btn btn btn-white btn-animated">کشف کنید</a>
         </div>
         <div class="scroll-indicator">
             <span class="mouse-icon"></span>
@@ -911,32 +905,28 @@
       <section class="event-intro">
         <h2 class="section-title about-title">درباره رویداد</h2>
         <p class="intro-text">
-          رویداد هنری "درنگ" یک فستیوال سالانه است که با هدف حمایت از استعدادهای جوان و ارائه فرصتی برای نمایش آثار هنری دانشجویان برگزار می‌شود. این رویداد شامل انواع مختلف هنرها از تجسمی تا نمایشی، از ادبی تا دیجیتال است و محیطی فراهم می‌کند که هنرمندان جوان بتوانند تجربیات خود را به اشتراک بگذارند.
+درنگ یک ابتکار هنری سالانه از سوی انجمن مدآرت علوم پزشکی اصفهان است که می‌کوشد تا برای نخستین بار فضایی برای دیده شدن دانشجویان هنرمند در اصفهان، فراهم کند. این فستیوال مشتمل بر سه بخش کلی فراخوان ارسال آثار، نمایشگاه و اختتامیه می‌باشد. تمرکز درنگ، بر پیوند روح هنر و درمان است که هرسال با یک محوریت خاص، اقدام به نمایش آثار دانشجویان هنرمند می‌کند. فقدان فاطمه (سارا) صدیقی صابر، دانشجوی ترم 2 پزشکی اصفهان، ما را بر آن داشت که درنگ را برای سارا برگزار کنیم. 
         </p>
 <section id="timeline" class="timeline-panel">
           <div class="timeline-track">
             <div class="timeline-item">
               <div class="timeline-year">فراخوان آثار</div>
               <div class="timeline-desc">
-                <h4>10 شهریور</h4>
+                <h4>۱۸ شهریور تا ۴ مهر</h4>
               </div>
             </div>
             <div class="timeline-item">
               <div class="timeline-year">داوری آثار</div>
               <div class="timeline-desc">
-                <h4>20 مهر</h4>
+                <h4>۵ الی ۱۵ مهر</h4>
               </div>
             </div>
             <div class="timeline-item">
-              <div class="timeline-year">برپایی نمایشگاه</div>
+              <div class="timeline-year">نمایشگاه و اختتامیه</div>
               <div class="timeline-desc">
-                <h4>30 مهر</h4>
+                <h4>۱۸ مهر</h4>
               </div>
             </div>
-            <div class="timeline-item">
-              <div class="timeline-year">مراسم اختتامیه</div>
-              <div class="timeline-desc">
-                <h4>31 مهر</h4>
               </div>
             </div>
           </div>
@@ -949,7 +939,10 @@
 
     <!-- دسته‌بندی آثار -->
     <section id="categories" class="categories">
-        <h2 class="section-title">دسته‌بندی آثار</h2>
+        <h2 class="section-title">فراخوان آثار</h2>
+        <p class="intro-text-f">
+شرکت‌کنندگان می‌توانند آثار خود مرتبط با محوریت رویداد را در دسته‌بندی‌های ذیل ارسال کنند. برای مشاهده شیوه‌نامه ارسال آثار و نکات تکمیلی به کاتالوگ فراخوان مراجعه کنید.
+        </p>
         <div class="category-grid">
             <div class="category-card" tabindex="0">
                 <i class="fas fa-palette category-icon"></i>
@@ -959,7 +952,7 @@
             <div class="category-card" tabindex="0">
                 <i class="fas fa-theater-masks category-icon"></i>
                 <h3 class="category-title">هنرهای نمایشی</h3>
-                <p class="category-desc">تئاتر، رقص، موسیقی، و سایر هنرهای اجرایی که تعامل مستقیم با مخاطب دارند.</p>
+                <p class="category-desc">تئاتر، اجرای موسیقی و سایر هنرهای اجرایی که تعامل مستقیم با مخاطب دارند.</p>
             </div>
             <div class="category-card" tabindex="0">
                 <i class="fas fa-feather-alt category-icon"></i>
@@ -967,31 +960,24 @@
                 <p class="category-desc">شعر، داستان کوتاه، مقاله ادبی و سایر آثار نوشتاری خلاقانه و هنری.</p>
             </div>
             <div class="category-card" tabindex="0">
-                <i class="fas fa-laptop-code category-icon"></i>
-                <h3 class="category-title">هنرهای دیجیتال</h3>
-                <p class="category-desc">انیمیشن، بازی‌سازی، هنر تعاملی و آثار هنری ساخته شده با ابزارهای دیجیتال.</p>
-            </div>
-            <div class="category-card" tabindex="0">
                 <i class="fas fa-video category-icon"></i>
                 <h3 class="category-title">آثار تصویری</h3>
-                <p class="category-desc">فیلم کوتاه، مستند، موشن گرافیک و سایر آثار تصویری و سینمایی.</p>
+                <p class="category-desc">فیلم کوتاه، مستند، موشن گرافیک، انیمیشن و پوستر سایر آثار تصویری و سینمایی.</p>
             </div>
-            <div class="category-card" tabindex="0">
-                <i class="fas fa-cube category-icon"></i>
-                <h3 class="category-title">هنرهای کاربردی</h3>
-                <p class="category-desc">طراحی صنعتی، معماری، طراحی فضا و سایر هنرهای کاربردی و عملی.</p>
-            </div>
+        </div>
+<p> </p>
+        <h2 class="section-title"></h2>
+        <h2 class="section-title"> </h2>
+        <h2 class="section-title"> </h2>
+        <h2 class="section-title">آماده شرکت هستید؟</h2>
+        <div class="action-buttons">
+            <a href="#" class="action-btn btn btn-white btn-animated" tabindex="0">ثبت نام و ارسال اثر</a>
+            <a href="#contact" class="contact-btn btn btn-white btn-animated" tabindex="0">سوالی داری؟</a>
         </div>
     </section>
 
     <!-- Action Section -->
     <section id="register" class="action-section">
-        <h2 class="section-title">آماده شرکت هستید؟</h2>
-        <p style="color: var(--bg-main); font-size: 1.12rem; margin-bottom: 25px;">همین حالا آثار خود را ثبت کنید و در بزرگترین رویداد هنری دانشجویی شرکت کنید.</p>
-        <div class="action-buttons">
-            <a href="#" class="action-btn btn btn-white btn-animated" tabindex="0">ثبت نام و ارسال اثر</a>
-            <a href="#contact" class="contact-btn btn btn-white btn-animated" tabindex="0">سوالی داری؟</a>
-        </div>
     </section>
 
     <!-- Footer -->
@@ -999,9 +985,9 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>تماس با ما</h3>
-                <p>📧 info@negahnow.ir</p>
+                <p>📧 DerangMedart@gmail.com</p>
                 <p>📞 ۰۲۱-۱۲۳۴۵۶۷۸</p>
-                <p>📍 تهران، خیابان انقلاب، دانشگاه تهران</p>
+                <p>📍 اصفهان، خیابان هزارجریب، دانشگاه علوم پزشکی اصفهان، دانشکده پزشکی</p>
             </div>
             <div class="footer-section">
                 <h3>لینک‌های مفید</h3>
@@ -1012,19 +998,20 @@
             <div class="footer-section">
                 <h3>ما را دنبال کنید</h3>
                 <div class="social-links">
-                    <a href="#" class="social-link" tabindex="0"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link" tabindex="0"><i class="fab fa-telegram"></i></a>
+                    <a href="https://www.instagram.com/medart_club/" class="social-link" tabindex="0"><i class="fab fa-instagram"></i></a>
+                    <a href="https://t.me/medart_club" class="social-link" tabindex="0"><i class="fab fa-telegram"></i></a>
                     <a href="#" class="social-link" tabindex="0"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="social-link" tabindex="0"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; ۱۴۰۳ رویداد هنری درنگ. تمامی حقوق محفوظ است.</p>
+            <p>© ۱۴۰۴ رویداد هنری درنگ. تمامی حقوق برای انجمن مدآرت محفوظ است.</p>
         </div>
     </footer>
 
     <script>
+        // همه اسکریپت‌های قبلی
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 20) {
@@ -1033,6 +1020,7 @@
                 navbar.classList.remove('scrolled');
             }
         });
+        
         const navHamburger = document.getElementById('navHamburger');
         const navMenuMobile = document.getElementById('navMenuMobile');
         let navMenuOpen = false;
@@ -1042,6 +1030,7 @@
             navMenuMobile.style.display = navMenuOpen ? 'flex' : 'none';
             navHamburger.innerHTML = navMenuOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
+        
         document.body.addEventListener('click', function(e) {
             if (navMenuOpen && !navMenuMobile.contains(e.target) && !navHamburger.contains(e.target)) {
                 navMenuMobile.style.display = 'none';
@@ -1049,6 +1038,7 @@
                 navMenuOpen = false;
             }
         });
+        
         navMenuMobile.querySelectorAll('a').forEach(function(link) {
             link.addEventListener('click', function() {
                 navMenuMobile.style.display = 'none';
@@ -1057,18 +1047,53 @@
             });
         });
 
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const totalSlides = slides.length;
-        function showSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            slides[index].classList.add('active');
+        // انیمیشن تایپ رایتر جدید
+        const texts = [
+            "نخستین فستیوال هنری دانشگاه علوم پزشکی اصفهان",
+            "درنگ، مرهمی است از جنس نگاه، تامل و هنر ...",
+            "همین امروز در این رویداد شرکت کنید"
+        ];
+        
+        let currentTextIndex = 0;
+        let currentCharIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 80;
+        let deleteSpeed = 50;
+        let pauseTime = 2000;
+        
+        const typewriterElement = document.getElementById('typewriterText');
+        
+        function typeWriter() {
+            const currentText = texts[currentTextIndex];
+            
+            if (isDeleting) {
+                typewriterElement.textContent = currentText.substring(0, currentCharIndex - 1);
+                currentCharIndex--;
+                
+                if (currentCharIndex === 0) {
+                    isDeleting = false;
+                    currentTextIndex = (currentTextIndex + 1) % texts.length;
+                    setTimeout(typeWriter, 500);
+                    return;
+                }
+                setTimeout(typeWriter, deleteSpeed);
+            } else {
+                typewriterElement.textContent = currentText.substring(0, currentCharIndex + 1);
+                currentCharIndex++;
+                
+                if (currentCharIndex === currentText.length) {
+                    isDeleting = true;
+                    setTimeout(typeWriter, pauseTime);
+                    return;
+                }
+                setTimeout(typeWriter, typeSpeed);
+            }
         }
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            showSlide(currentSlide);
-        }
-        setInterval(nextSlide, 5000);
+        
+        // شروع انیمیشن تایپ رایتر پس از لود صفحه
+        window.addEventListener('load', function() {
+            setTimeout(typeWriter, 1000);
+        });
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1088,6 +1113,7 @@
                 slideshow.style.transform = `translateY(${rate}px)`;
             }
         });
+        
         window.addEventListener('load', function() {
             document.body.style.opacity = '0';
             document.body.style.transition = 'opacity 0.5s ease';
@@ -1097,24 +1123,4 @@
         });
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
