@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -14,18 +15,21 @@
             --button-register: #D25D5D;
             --white: #fff;
             --text: #1d2020;
-            --navbar-shadow: 0 8px 32px rgba(0,0,0,0.12);
+            --navbar-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
             --navbar-bg: rgba(44, 44, 56, 0.84);
             --menu-hover-bg: rgba(35, 155, 167, 0.22);
-            --register-btn-shadow: 0 8px 24px rgba(210,93,93,0.13), 0 2px 8px rgba(35,155,167,0.10);
-            --register-btn-glow: 0 0 0 4px rgba(210,93,93,0.18);
+            --register-btn-shadow: 0 8px 24px rgba(210, 93, 93, 0.13), 0 2px 8px rgba(35, 155, 167, 0.10);
+            --register-btn-glow: 0 0 0 4px rgba(210, 93, 93, 0.18);
         }
-        html, body {
+
+        html,
+        body {
             width: 100vw;
             min-height: 100vh;
             overscroll-behavior-x: contain;
             scroll-behavior: smooth;
         }
+
         body {
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 400;
@@ -34,7 +38,12 @@
             overflow-x: hidden;
             position: relative;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         .navbar {
             position: fixed;
@@ -50,6 +59,7 @@
             justify-content: center;
             pointer-events: none;
         }
+
         .nav-container {
             background: var(--navbar-bg);
             box-shadow: var(--navbar-shadow);
@@ -65,6 +75,7 @@
             position: relative;
             pointer-events: auto;
         }
+
         .logo {
             font-size: 24px;
             font-weight: 900;
@@ -76,6 +87,7 @@
             display: flex;
             align-items: center;
         }
+
         .nav-hamburger {
             display: none;
             background: none;
@@ -91,19 +103,23 @@
             z-index: 1001;
             padding: 0 16px 0 0;
         }
+
         @media (max-width:900px) {
             .nav-hamburger {
                 display: block;
             }
+
             .logo {
                 margin-right: 38px;
             }
         }
+
         .nav-menu {
             display: flex;
             list-style: none;
             gap: 24px;
         }
+
         .nav-menu a {
             color: var(--white);
             text-decoration: none;
@@ -117,30 +133,37 @@
             border: none;
             display: inline-block;
         }
-        .nav-menu a:hover, .nav-menu a:focus {
+
+        .nav-menu a:hover,
+        .nav-menu a:focus {
             background: var(--menu-hover-bg);
             color: var(--white);
             border-radius: 23px;
         }
+
         @media (max-width:900px) {
             .nav-menu a {
                 padding: 8px 12px;
             }
+
             .nav-menu a:hover,
             .nav-menu a:focus {
                 padding: 8px 20px;
                 border-radius: 16px;
             }
         }
+
         @media (max-width:600px) {
             .nav-menu a {
                 padding: 7px 8px;
             }
+
             .nav-menu a:hover,
             .nav-menu a:focus {
                 padding: 7px 13px;
             }
         }
+
         .nav-register-btn {
             background: var(--button-register);
             color: var(--white);
@@ -158,22 +181,30 @@
             position: relative;
             left: 0;
             letter-spacing: 1px;
-            text-shadow: 0 2px 12px rgba(210,93,93,0.17);
+            text-shadow: 0 2px 12px rgba(210, 93, 93, 0.17);
         }
-        .nav-register-btn:hover, .nav-register-btn:focus {
+
+        .nav-register-btn:hover,
+        .nav-register-btn:focus {
             background: var(--accent);
             color: var(--white);
             box-shadow: var(--register-btn-glow);
         }
+
         @media (max-width:900px) {
             .nav-menu {
                 display: none !important;
             }
+
             .logo {
                 margin-right: 38px;
             }
-            .nav-container {max-width: 98vw;}
+
+            .nav-container {
+                max-width: 98vw;
+            }
         }
+
         @media (max-width:600px) {
             .nav-register-btn {
                 display: block;
@@ -186,26 +217,48 @@
                 top: 50%;
                 transform: translateY(-50%);
             }
+
             .navbar {
                 right: 10px;
                 left: 10px;
                 top: 10px;
             }
+
             .nav-container {
                 padding: 0 18px;
                 min-height: 56px;
             }
+
             .nav-hamburger {
                 padding-right: 8px;
             }
         }
+
         @media (max-width:400px) {
-            .nav-menu-mobile { min-width: 100vw; border-radius: 0;}
-            .nav-register-btn { left: 7px;}
-            .navbar { right: 2px; left: 2px; top: 2px;}
-            .nav-container { padding: 0 5px;}
-            .nav-hamburger { padding-right: 4px;}
+            .nav-menu-mobile {
+                min-width: 100vw;
+                border-radius: 0;
+            }
+
+            .nav-register-btn {
+                left: 7px;
+            }
+
+            .navbar {
+                right: 2px;
+                left: 2px;
+                top: 2px;
+            }
+
+            .nav-container {
+                padding: 0 5px;
+            }
+
+            .nav-hamburger {
+                padding-right: 4px;
+            }
         }
+
         .nav-menu-mobile {
             display: none;
             flex-direction: column;
@@ -220,16 +273,26 @@
             box-shadow: var(--navbar-shadow);
             padding: 28px 0 18px 0;
             z-index: 1100;
-            animation: menuShow .27s cubic-bezier(.5,1.9,.7,1.05);
+            animation: menuShow .27s cubic-bezier(.5, 1.9, .7, 1.05);
         }
+
         @keyframes menuShow {
-            0% { opacity: 0; transform: translateY(-30px);}
-            100% { opacity: 1; transform: translateY(0);}
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         .nav-menu-mobile li {
             padding: 8px 28px;
-            border-bottom: 1px solid rgba(35,155,167,0.09);
+            border-bottom: 1px solid rgba(35, 155, 167, 0.09);
         }
+
         .nav-menu-mobile a {
             color: var(--white);
             font-size: 1.05rem;
@@ -240,7 +303,9 @@
             padding: 8px 0;
             transition: background .2s, color .2s;
         }
-        .nav-menu-mobile a:hover, .nav-menu-mobile a:focus {
+
+        .nav-menu-mobile a:hover,
+        .nav-menu-mobile a:focus {
             background: var(--menu-hover-bg);
             color: var(--white);
             border-radius: 15px;
@@ -269,18 +334,20 @@
             background-position: center;
             background-repeat: no-repeat;
         }
+
         .slideshow-container::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(35,155,167,0.75) 0%, rgba(225,170,54,0.35) 100%);
+            background: linear-gradient(135deg, rgba(35, 155, 167, 0.75) 0%, rgba(225, 170, 54, 0.35) 100%);
             z-index: 1;
         }
-        
+
         /* محتوای ثابت اسلایدشو */
         .slide-content {
             position: absolute;
-            top: 50%; left: 50%;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
             color: var(--primary);
@@ -288,8 +355,9 @@
             max-width: 800px;
             padding: 0 20px;
         }
+
         .slide-title-image {
-            max-width: 340px;
+            max-width: 600px;
             width: 100%;
             height: auto;
             margin-bottom: 20px;
@@ -297,11 +365,11 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
+
         /* متن متغیر با انیمیشن تایپ */
         .slide-description {
-            font-size: 1.25rem;
-            line-height: 1.8;
+            font-size: 1.7rem;
+            line-height: 1.2;
             margin-bottom: 30px;
             color: var(--bg-main);
             text-shadow: 0 2px 8px var(--primary);
@@ -309,72 +377,111 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            height: 100px;
         }
-        
+
         .typewriter-text {
             border-left: 2px solid var(--accent);
             padding-left: 5px;
             animation: blink 1s infinite;
         }
-        
+
         @keyframes blink {
-            0%, 50% { border-color: var(--accent); }
-            51%, 100% { border-color: transparent; }
+
+            0%,
+            50% {
+                border-color: var(--accent);
+            }
+
+            51%,
+            100% {
+                border-color: transparent;
+            }
         }
-        
+
         .slide-btn,
         .action-btn {
-            text-transform: uppercase;
             text-decoration: none;
             padding: 18px 52px;
             display: inline-block;
             border-radius: 100px;
             position: relative;
-            font-weight: 900;
             font-size: 1.16rem;
-            border: none;
-            background: linear-gradient(90deg, #d04545 60%, #45b4d0);
-            color: var(--white);
-            box-shadow: var(--register-btn-shadow), 0 0 0 5px rgba(35,155,167,0.08);
-            outline: none;
-            letter-spacing: 1.4px;
-            transition: background .2s, color .2s, box-shadow .2s, transform .13s;
-            text-shadow: 0 2px 12px rgba(210,93,93,0.18);
+            font-weight: bolder;
+            /* text-shadow: 0 2px 12px rgba(210, 93, 93, 0.18); */
+            display: inline-block;
+            border: 1px solid #ffffff4d;
+            background: linear-gradient(45deg, #c189051f, #db916d, #c189051f);
+            background-size: 200% 200%;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            text-shadow: 0 0 8px black;
+            transition: background-position 0.3s ease,
+                box-shadow 0.1s ease-in-out,
+                transform 0.3s ease-in-out;
+            background-position: 0% 0%;
         }
+
         .slide-btn:active,
         .action-btn:active {
             transform: scale(.97);
         }
+
         .slide-btn:hover,
         .action-btn:hover,
         .slide-btn:focus,
         .action-btn:focus {
-            background: linear-gradient(90deg, var(--accent) 60%, var(--button-register));
-            color: var(--white);
-            box-shadow: var(--register-btn-glow);
+            background-position: 100% 100%;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4),
+                0 0 15px rgba(138, 129, 116, 0.8),
+                0 0 30px rgba(174, 234, 220, 0.252);
+            transform: translateY(-5px);
         }
+
         .btn-animated {
             animation: moveInBottom 5s ease-out;
             animation-fill-mode: backwards;
         }
+
         @keyframes moveInBottom {
             0% {
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0px);
             }
         }
+
         @media (max-width: 768px) {
-            .slide-description { font-size: 1.04rem; }
-            .slide-btn, .action-btn { font-size: 1.08rem; padding: 15px 30px;}
+            .slide-description {
+                font-size: 1.04rem;
+            }
+
+            .slide-btn,
+            .action-btn {
+                font-size: 1.08rem;
+                padding: 15px 30px;
+            }
         }
+
         @media (max-width: 525px) {
-            .slide-description { font-size: 0.93rem; }
-            .slide-content { padding: 0 2vw; }
-            .slide-btn, .action-btn { font-size: 1rem; padding: 11px 10vw;}
+            .slide-description {
+                font-size: 0.93rem;
+            }
+
+            .slide-content {
+                padding: 0 2vw;
+            }
+
+            .slide-btn,
+            .action-btn {
+                font-size: 1rem;
+                padding: 11px 10vw;
+            }
         }
 
         .scroll-indicator {
@@ -391,6 +498,7 @@
             height: 85px;
             animation: bounce 2s infinite;
         }
+
         .mouse-icon {
             width: 30px;
             height: 50px;
@@ -400,6 +508,7 @@
             margin-bottom: 0;
             display: block;
         }
+
         .mouse-icon::before {
             content: '';
             position: absolute;
@@ -412,26 +521,50 @@
             border-radius: 2px;
             animation: scroll 2s infinite;
         }
+
         .arrow-down {
             color: var(--accent);
             font-size: 22px;
             margin-top: 8px;
             display: block;
         }
+
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0);}
-            40% { transform: translateX(-50%) translateY(-10px);}
-            60% { transform: translateX(-50%) translateY(-5px);}
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
         }
+
         @keyframes scroll {
-            0% { opacity: 1; transform: translateX(-50%) translateY(0);}
-            100% { opacity: 0; transform: translateX(-50%) translateY(20px);}
+            0% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
         }
 
         .about-wrapper {
             padding: 0;
             margin: 0;
         }
+
         .event-intro {
             padding: 90px 50px 0px;
             background: var(--bg-main);
@@ -443,17 +576,20 @@
             background-position: center;
             background-repeat: no-repeat;
         }
+
         .event-intro::before {
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(236,236,187,0.77) 0%, rgba(225,170,54,0.26) 100%);
+            background: linear-gradient(135deg, rgba(236, 236, 187, 0.77) 0%, rgba(225, 170, 54, 0.26) 100%);
             z-index: 1;
         }
-        .event-intro > * {
+
+        .event-intro>* {
             position: relative;
             z-index: 2;
         }
+
         .section-title {
             font-size: 2.3rem;
             font-weight: 900;
@@ -461,9 +597,11 @@
             color: var(--primary);
             letter-spacing: 1px;
         }
-		.about-title {
-    color: #2f2a20;
-}
+
+        .about-title {
+            color: #2f2a20;
+        }
+
         .intro-text {
             font-size: 1.1rem;
             line-height: 2;
@@ -478,7 +616,7 @@
             max-width: 720px;
             margin: 0 auto 55px;
             color: #ffffff;
-text-align: center;
+            text-align: center;
         }
 
         /* تایم‌لاین داخل بخش درباره رویداد */
@@ -490,27 +628,33 @@ text-align: center;
             justify-content: center;
             align-items: center;
             position: relative;
+            max-width: 100%;
         }
+
         .timeline-track {
             display: flex;
             gap: 0;
             background: none;
-            box-shadow: 0 16px 45px rgba(35,155,167,0.08);
             border-radius: 24px;
             width: 90vw;
             max-width: 1060px;
             min-height: 140px;
             overflow: hidden;
             position: relative;
+            box-shadow: 1px 0px 12px 3px rgb(4 4 4 / 16%);
+            background-color: #f3e3c529;
+            border: 1px solid #ffffff29;
+            backdrop-filter: blur(6px);
         }
+
         .timeline-item {
             flex: 1 1 180px;
             min-width: 120px;
             max-width: 1fr;
-            background: #cbba97;
+            background: transparent;
             color: #2f2a20;
             position: relative;
-            transition: flex-basis 0.45s cubic-bezier(.6,2,.6,1), background 0.4s;
+            transition: flex-basis 0.45s cubic-bezier(.6, 2, .6, 1), background 0.4s;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -519,11 +663,13 @@ text-align: center;
             overflow: hidden;
             z-index: 1;
             border-radius: 0;
-		    opacity: 0.9; /* مقدار شفافیت دلخواه؛ کمتر یعنی شفاف‌تر */
+            opacity: 0.9;
+            /* مقدار شفافیت دلخواه؛ کمتر یعنی شفاف‌تر */
 
         }
-        .timeline-item:not(:last-child) {
-        }
+
+        .timeline-item:not(:last-child) {}
+
         .timeline-year {
             font-family: 'Vazirmatn', sans-serif;
             font-size: 1.18rem;
@@ -532,19 +678,22 @@ text-align: center;
             text-align: center;
             margin: 0;
             margin-bottom: 10px;
-            padding: 32px 0 0 0;
+            padding: 15px 0 0 0;
             transition: color 0.3s;
         }
+
         .timeline-item:hover,
         .timeline-item:focus {
-            flex-basis: 320px;
-            background: #d9ac4e;
+            flex-basis: 250px;
+            background: #7d8c66d6;
             z-index: 2;
         }
+
         .timeline-item:hover .timeline-year,
         .timeline-item:focus .timeline-year {
             color: var(--bg-main);
         }
+
         .timeline-desc {
             opacity: 0;
             pointer-events: none;
@@ -554,6 +703,7 @@ text-align: center;
             padding: 0 15px;
             font-size: 1.02rem;
         }
+
         .timeline-item:hover .timeline-desc,
         .timeline-item:focus .timeline-desc {
             opacity: 1;
@@ -561,22 +711,26 @@ text-align: center;
             max-height: 180px;
             transition-delay: 0.1s;
         }
+
         .timeline-desc h4 {
             font-size: 1.08rem;
             font-weight: 800;
             color: #202020;
             margin: 10px 0 7px 0;
         }
+
         .timeline-desc p {
             margin: 0 0 7px 0;
             color: var(--white);
             font-size: 0.97rem;
             line-height: 1.7;
         }
+
         @media (max-width:700px) {
             .timeline-panel {
                 padding-bottom: 10px;
             }
+
             .timeline-track {
                 width: 100vw;
                 max-width: 100vw;
@@ -587,29 +741,48 @@ text-align: center;
                 border-radius: 18px;
                 box-sizing: border-box;
             }
+
             .timeline-item {
                 flex: 1 1 0;
                 min-width: 0;
                 border-radius: 12px;
                 margin: 0 2px;
             }
+
             .timeline-year {
                 font-size: 0.97rem;
                 padding: 22px 0 0 0;
                 margin-bottom: 7px;
             }
-            .timeline-desc h4 { font-size: 0.97rem;}
-            .timeline-desc p { font-size: 0.87rem;}
+
+            .timeline-desc h4 {
+                font-size: 0.97rem;
+            }
+
+            .timeline-desc p {
+                font-size: 0.87rem;
+            }
         }
+
         @media (max-width:480px) {
             .timeline-track {
                 width: 99vw;
                 max-width: 99vw;
                 gap: 4px;
             }
-            .timeline-year { font-size: 0.78rem; padding: 12px 0 0 0; }
-            .timeline-desc h4 { font-size: 0.83rem;}
-            .timeline-desc p { font-size: 0.73rem;}
+
+            .timeline-year {
+                font-size: 0.78rem;
+                padding: 12px 0 0 0;
+            }
+
+            .timeline-desc h4 {
+                font-size: 0.83rem;
+            }
+
+            .timeline-desc p {
+                font-size: 0.73rem;
+            }
         }
 
         /* دسته‌بندی آثار */
@@ -623,90 +796,116 @@ text-align: center;
             background-repeat: no-repeat;
             z-index: 2;
         }
+
         .categories::before {
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(35,155,167,0.80) 0%, rgba(225,170,54,0.18) 100%);
+            background: linear-gradient(135deg, rgba(35, 155, 167, 0.80) 0%, rgba(225, 170, 54, 0.18) 100%);
             z-index: 1;
         }
-        .categories > * {
+
+        .categories>* {
             position: relative;
             z-index: 2;
         }
+
         .categories .section-title {
             color: var(--bg-main);
             text-align: center;
         }
+
         .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 28px;
-            max-width: 1100px;
-            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1%;
+            row-gap: 20px;
+            max-width: 100%;
             padding: 0 18px;
-		    opacity: 0.9; /* مقدار شفافیت دلخواه؛ کمتر یعنی شفاف‌تر */
+            opacity: 0.9;
         }
+
+
+        .category-card {
+            border-radius: 27px;
+            padding: 36px 22px;
+            text-align: center;
+            transition: background .2s, color .2s, box-shadow .2s, border .2s, transform .2s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            color: #ffffff;
+            flex: 0 0 24.24%;
+            max-width: 24.24%;
+            box-shadow: 1px 0px 12px 3px rgb(4 4 4 / 16%);
+            background-color: #867e55a8;
+            border: 1px solid #ffffff8f;
+            backdrop-filter: blur(54px);
+        }
+
         @media (max-width:600px) {
-            .categories { padding: 31px 3vw;}
+            .categories {
+                padding: 31px 3vw;
+            }
+
             .category-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 12px;
                 padding: 0 12px;
             }
-            .category-card { padding: 20px 6px;}
-            .category-title { font-size: 0.92rem;}
-            .category-icon { font-size: 1.55rem;}
+
+            .category-card {
+                flex: 0 0 48%;
+                max-width: 48%;
+            }
+
+            .category-title {
+                font-size: 0.92rem;
+            }
+
+            .category-icon {
+                font-size: 1.55rem;
+            }
         }
+
         @media (max-width:400px) {
             .category-grid {
-                grid-template-columns: 1fr;
                 padding: 0 6px;
             }
         }
-        .category-card {
-            background: var(--bg-main);
-            border: 2px solid var(--accent);
-            border-radius: 27px;
-            padding: 36px 22px;
-            text-align: center;
-            transition:
-                background .2s,
-                color .2s,
-                box-shadow .2s,
-                border .2s,
-                transform .2s;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            color: var(--primary);
-        }
-        .category-card:hover, .category-card:focus {
+
+        .category-card:hover,
+        .category-card:focus {
             background: var(--accent);
             color: var(--white);
             transform: scale(1.045);
         }
+
         .category-icon {
             font-size: 2.6rem;
-            color: var(--accent);
+            color: #dcdfb7;
             margin-bottom: 15px;
             transition: color .2s, transform .2s;
         }
+
         .category-card:hover .category-icon,
         .category-card:focus .category-icon {
             color: var(--white);
             transform: scale(1.14) rotate(-8deg);
         }
+
         .category-title {
             font-size: 1.25rem;
             font-weight: 700;
             margin-bottom: 12px;
-            color: var(--primary);
+            color: #ffffff;
         }
+
         .category-card:hover .category-title,
         .category-card:focus .category-title {
             color: var(--white);
         }
+
         .category-desc {
             color: var(--primary);
             line-height: 1.6;
@@ -714,6 +913,7 @@ text-align: center;
             max-height: 0;
             transition: opacity .2s, max-height .2s;
         }
+
         .category-card:hover .category-desc,
         .category-card:focus .category-desc {
             opacity: 1;
@@ -726,74 +926,111 @@ text-align: center;
             background: var(--accent);
             text-align: center;
         }
-        .action-section .section-title { color: var(--bg-main);}
+
+        .action-section .section-title {
+            color: var(--bg-main);
+        }
+
         .action-buttons {
             display: flex;
             justify-content: center;
             gap: 30px;
-            margin-top: 40px;
             flex-wrap: wrap;
         }
+
         .action-btn {
-            background: linear-gradient(90deg, #d04545 60%, #45b4d0);
-            color: var(--white);
-            font-weight: 900;
+            color: #266bad;
+            font-weight: bolder;
             border-radius: 100px;
             font-size: 1.18rem;
             padding: 18px 52px;
             letter-spacing: 1.4px;
-            box-shadow: var(--register-btn-shadow), 0 0 0 5px rgba(35,155,167,0.08);
-            text-shadow: 0 2px 12px rgba(210,93,93,0.18);
+            text-shadow: 0 2px 12px rgba(210, 93, 93, 0.18);
             transition: background .2s, color .2s, box-shadow .2s, transform .13s;
             border: none;
+            box-shadow: 1px 0px 12px 3px rgb(4 4 4 / 16%);
+            background-color: #ffffffbd;
+            border: 1px solid #ffffff29;
         }
+
         .action-btn:active {
             transform: scale(.97);
         }
-        .action-btn:hover, .action-btn:focus {
+
+        .action-btn:hover,
+        .action-btn:focus {
             background: linear-gradient(90deg, #45b4d0 60%, #45b4d0);
             color: var(--white);
             box-shadow: var(--register-btn-glow);
         }
+
         .contact-btn {
-    text-decoration: none;
-            background: var(--white);
-            color: #d9ac4e;
-            font-weight: 700;
+            display: inline-flex;
+            justify-content: center;
+            align-self: anchor-center;
+            text-decoration: none;
+            color: #ffffff;
             border-radius: 100px;
             font-size: 1.08rem;
-            padding: 14px 40px;
-            margin-top: 0;
-            box-shadow: 0 2px 12px rgba(35,155,167,0.07);
+            padding: 20px 40px;
             transition: background .2s, color .2s, border .2s, transform .13s;
             letter-spacing: 1px;
+            box-shadow: 1px 0px 12px 3px rgb(4 4 4 / 16%);
+            background-color: #f3e3c529;
+            border: 1px solid #ffffff29;
+            backdrop-filter: blur(6px);
         }
-        .contact-btn:hover, .contact-btn:focus {
-            background: var(--primary);
-            color: var(--white);
-            border-color: var(--accent);
+
+        .contact-btn:hover,
+        .contact-btn:focus {
+            background: #322d2da3;
+            color: #fbcf6f;
+            border-color: #e0a74491;
         }
+
         @media (max-width:900px) {
-            .action-section { padding: 40px 8vw;}
-            .action-buttons { gap: 15px;}
+            .action-section {
+                padding: 40px 8vw;
+            }
+
+            .action-buttons {
+                gap: 15px;
+            }
         }
+
         @media (max-width:600px) {
-            .action-section { padding: 22px 2vw;}
+            .action-section {
+                padding: 22px 2vw;
+            }
+
             .action-buttons {
                 flex-direction: column;
                 gap: 15px;
                 align-items: center;
             }
-            .action-btn { font-size: 1.08rem; padding: 15px 30px;}
+
+            .action-btn {
+                font-size: 1.08rem;
+                padding: 15px 30px;
+            }
+
             .contact-btn {
                 font-size: 1rem;
                 padding: 11px 10vw;
                 margin-top: 7px;
             }
         }
+
         @media (max-width:525px) {
-            .action-btn { font-size: 1rem; padding: 11px 10vw;}
-            .contact-btn { font-size: 0.93rem; padding: 10px 9vw;}
+            .action-btn {
+                font-size: 1rem;
+                padding: 11px 10vw;
+            }
+
+            .contact-btn {
+                font-size: 0.93rem;
+                padding: 10px 9vw;
+            }
         }
 
         .footer {
@@ -801,6 +1038,7 @@ text-align: center;
             padding: 50px 50px 22px;
             color: var(--bg-main);
         }
+
         .footer-content {
             max-width: 1100px;
             margin: 0 auto;
@@ -808,19 +1046,23 @@ text-align: center;
             grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
             gap: 38px;
         }
+
         .footer-section h3 {
             font-size: 1.15rem;
             margin-bottom: 15px;
             color: var(--accent);
         }
+
         .social-links {
             display: flex;
             gap: 15px;
             margin-top: 18px;
         }
+
         .social-link {
             display: inline-block;
-            width: 40px; height: 40px;
+            width: 40px;
+            height: 40px;
             background: var(--accent);
             border-radius: 50%;
             text-align: center;
@@ -830,13 +1072,16 @@ text-align: center;
             transition: all .2s;
             border: 2px solid var(--bg-main);
         }
-        .social-link:hover, .social-link:focus {
+
+        .social-link:hover,
+        .social-link:focus {
             background: var(--primary);
             color: var(--accent);
             border: 2px solid var(--accent);
             transform: scale(1.08) rotate(-8deg);
             box-shadow: 0 8px 24px var(--primary);
         }
+
         .footer-bottom {
             text-align: center;
             margin-top: 34px;
@@ -845,17 +1090,42 @@ text-align: center;
             color: var(--bg-main);
             font-size: 0.95rem;
         }
+
         @media (max-width:900px) {
-            .footer { padding: 26px 3vw 12px; }
-            .footer-content { gap: 11px;}
+            .footer {
+                padding: 26px 3vw 12px;
+            }
+
+            .footer-content {
+                gap: 11px;
+            }
         }
+
         @media (max-width:600px) {
-            .footer { padding: 12px 2vw 7px;}
-            .footer-content { gap: 5px;}
-            .footer-section h3 { font-size: 0.91rem;}
+            .footer {
+                padding: 12px 2vw 7px;
+            }
+
+            .footer-content {
+                gap: 5px;
+            }
+
+            .footer-section h3 {
+                font-size: 0.91rem;
+            }
+        }
+
+        .full-width {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
@@ -883,9 +1153,10 @@ text-align: center;
     </nav>
 
     <!-- Slideshow با انیمیشن تایپ جدید -->
-    <section id="home" class="slideshow-container">
+    <section id="home" class="slideshow-container slider">
         <div class="slide-content">
-            <img src="https://raw.githubusercontent.com/thisisahmadreza/Derangfestival/refs/heads/main/derang-3-2-logo.png" alt="عنوان رویداد" class="slide-title-image" />
+            <img src="https://raw.githubusercontent.com/thisisahmadreza/Derangfestival/refs/heads/main/derang-3-2-logo.png"
+                alt="عنوان رویداد" class="slide-title-image" />
             <p class="slide-description">
                 <span class="typewriter-text" id="typewriterText"></span>
             </p>
@@ -901,47 +1172,52 @@ text-align: center;
     <div class="section-divider"></div>
 
     <!-- درباره رویداد و تایم‌لاین -->
-    <div class="about-wrapper" id="about">
-      <section class="event-intro">
-        <h2 class="section-title about-title">درباره رویداد</h2>
-        <p class="intro-text">
-درنگ یک ابتکار هنری سالانه از سوی انجمن مدآرت علوم پزشکی اصفهان است که می‌کوشد تا برای نخستین بار فضایی برای دیده شدن دانشجویان هنرمند در اصفهان، فراهم کند. این فستیوال مشتمل بر سه بخش کلی فراخوان ارسال آثار، نمایشگاه و اختتامیه می‌باشد. تمرکز درنگ، بر پیوند روح هنر و درمان است که هرسال با یک محوریت خاص، اقدام به نمایش آثار دانشجویان هنرمند می‌کند. فقدان فاطمه (سارا) صدیقی صابر، دانشجوی ترم 2 پزشکی اصفهان، ما را بر آن داشت که درنگ را برای سارا برگزار کنیم. 
-        </p>
-<section id="timeline" class="timeline-panel">
-          <div class="timeline-track">
-            <div class="timeline-item">
-              <div class="timeline-year">فراخوان آثار</div>
-              <div class="timeline-desc">
-                <h4>۱۸ شهریور تا ۴ مهر</h4>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-year">داوری آثار</div>
-              <div class="timeline-desc">
-                <h4>۵ الی ۱۵ مهر</h4>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-year">نمایشگاه و اختتامیه</div>
-              <div class="timeline-desc">
-                <h4>۱۸ مهر</h4>
-              </div>
-            </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </section>
+    <div class="about-wrapper slider" id="about">
+        <section class="event-intro  full-width">
+            <h2 class="section-title about-title">درباره رویداد</h2>
+            <p class="intro-text">
+                درنگ یک ابتکار هنری سالانه از سوی انجمن مدآرت علوم پزشکی اصفهان است که می‌کوشد تا برای نخستین بار فضایی
+                برای دیده شدن دانشجویان هنرمند در اصفهان، فراهم کند. این فستیوال مشتمل بر سه بخش کلی فراخوان ارسال آثار،
+                نمایشگاه و اختتامیه می‌باشد. تمرکز درنگ، بر پیوند روح هنر و درمان است که هرسال با یک محوریت خاص، اقدام
+                به نمایش آثار دانشجویان هنرمند می‌کند. فقدان فاطمه (سارا) صدیقی صابر، دانشجوی ترم 2 پزشکی اصفهان، ما را
+                بر آن داشت که درنگ را برای سارا برگزار کنیم.
+            </p>
+            <section id="timeline" class="timeline-panel">
+                <div class="timeline-track">
+                    <div class="timeline-item">
+                        <div class="timeline-year">فراخوان آثار</div>
+                        <div class="timeline-desc">
+                            <h4>۱۸ شهریور تا ۴ مهر</h4>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">داوری آثار</div>
+                        <div class="timeline-desc">
+                            <h4>۵ الی ۱۵ مهر</h4>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">نمایشگاه و اختتامیه</div>
+                        <div class="timeline-desc">
+                            <h4>۱۸ مهر</h4>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    </div>
+    </section>
+    </section>
     </div>
 
     <!-- Divider between about and categories -->
     <div class="section-divider"></div>
 
     <!-- دسته‌بندی آثار -->
-    <section id="categories" class="categories">
+    <section id="categories" class="categories full-width slider">
         <h2 class="section-title">فراخوان آثار</h2>
         <p class="intro-text-f">
-شرکت‌کنندگان می‌توانند آثار خود مرتبط با محوریت رویداد را در دسته‌بندی‌های ذیل ارسال کنند. برای مشاهده شیوه‌نامه ارسال آثار و نکات تکمیلی به کاتالوگ فراخوان مراجعه کنید.
+            شرکت‌کنندگان می‌توانند آثار خود مرتبط با محوریت رویداد را در دسته‌بندی‌های ذیل ارسال کنند. برای مشاهده
+            شیوه‌نامه ارسال آثار و نکات تکمیلی به کاتالوگ فراخوان مراجعه کنید.
         </p>
         <div class="category-grid">
             <div class="category-card" tabindex="0">
@@ -965,7 +1241,7 @@ text-align: center;
                 <p class="category-desc">فیلم کوتاه، مستند، موشن گرافیک، انیمیشن و پوستر سایر آثار تصویری و سینمایی.</p>
             </div>
         </div>
-<p> </p>
+        <p> </p>
         <h2 class="section-title"></h2>
         <h2 class="section-title"> </h2>
         <h2 class="section-title"> </h2>
@@ -981,7 +1257,7 @@ text-align: center;
     </section>
 
     <!-- Footer -->
-    <footer id="contact" class="footer">
+    <footer id="contact" class="footer slider">
         <div class="footer-content">
             <div class="footer-section">
                 <h3>تماس با ما</h3>
@@ -998,8 +1274,10 @@ text-align: center;
             <div class="footer-section">
                 <h3>ما را دنبال کنید</h3>
                 <div class="social-links">
-                    <a href="https://www.instagram.com/medart_club/" class="social-link" tabindex="0"><i class="fab fa-instagram"></i></a>
-                    <a href="https://t.me/medart_club" class="social-link" tabindex="0"><i class="fab fa-telegram"></i></a>
+                    <a href="https://www.instagram.com/medart_club/" class="social-link" tabindex="0"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://t.me/medart_club" class="social-link" tabindex="0"><i
+                            class="fab fa-telegram"></i></a>
                     <a href="#" class="social-link" tabindex="0"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="social-link" tabindex="0"><i class="fab fa-youtube"></i></a>
                 </div>
@@ -1012,7 +1290,7 @@ text-align: center;
 
     <script>
         // همه اسکریپت‌های قبلی
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 20) {
                 navbar.classList.add('scrolled');
@@ -1020,27 +1298,27 @@ text-align: center;
                 navbar.classList.remove('scrolled');
             }
         });
-        
+
         const navHamburger = document.getElementById('navHamburger');
         const navMenuMobile = document.getElementById('navMenuMobile');
         let navMenuOpen = false;
-        navHamburger.addEventListener('click', function(e) {
+        navHamburger.addEventListener('click', function (e) {
             e.stopPropagation();
             navMenuOpen = !navMenuOpen;
             navMenuMobile.style.display = navMenuOpen ? 'flex' : 'none';
             navHamburger.innerHTML = navMenuOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
-        
-        document.body.addEventListener('click', function(e) {
+
+        document.body.addEventListener('click', function (e) {
             if (navMenuOpen && !navMenuMobile.contains(e.target) && !navHamburger.contains(e.target)) {
                 navMenuMobile.style.display = 'none';
                 navHamburger.innerHTML = '<i class="fas fa-bars"></i>';
                 navMenuOpen = false;
             }
         });
-        
-        navMenuMobile.querySelectorAll('a').forEach(function(link) {
-            link.addEventListener('click', function() {
+
+        navMenuMobile.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
                 navMenuMobile.style.display = 'none';
                 navHamburger.innerHTML = '<i class="fas fa-bars"></i>';
                 navMenuOpen = false;
@@ -1050,26 +1328,26 @@ text-align: center;
         // انیمیشن تایپ رایتر جدید
         const texts = [
             "نخستین فستیوال هنری دانشگاه علوم پزشکی اصفهان",
-            "درنگ، مرهمی است از جنس نگاه، تامل و هنر ...",
-            "همین امروز در این رویداد شرکت کنید"
+            "درنگ، مرهمی است از جنس نگاه و تامل!",
+            "نگاهی از جنس هنر شما ..."
         ];
-        
+
         let currentTextIndex = 0;
         let currentCharIndex = 0;
         let isDeleting = false;
         let typeSpeed = 80;
         let deleteSpeed = 50;
         let pauseTime = 2000;
-        
+
         const typewriterElement = document.getElementById('typewriterText');
-        
+
         function typeWriter() {
             const currentText = texts[currentTextIndex];
-            
+
             if (isDeleting) {
                 typewriterElement.textContent = currentText.substring(0, currentCharIndex - 1);
                 currentCharIndex--;
-                
+
                 if (currentCharIndex === 0) {
                     isDeleting = false;
                     currentTextIndex = (currentTextIndex + 1) % texts.length;
@@ -1080,7 +1358,7 @@ text-align: center;
             } else {
                 typewriterElement.textContent = currentText.substring(0, currentCharIndex + 1);
                 currentCharIndex++;
-                
+
                 if (currentCharIndex === currentText.length) {
                     isDeleting = true;
                     setTimeout(typeWriter, pauseTime);
@@ -1089,9 +1367,9 @@ text-align: center;
                 setTimeout(typeWriter, typeSpeed);
             }
         }
-        
+
         // شروع انیمیشن تایپ رایتر پس از لود صفحه
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             setTimeout(typeWriter, 1000);
         });
 
@@ -1105,16 +1383,16 @@ text-align: center;
             });
         });
 
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const scrolled = window.pageYOffset;
             const rate = scrolled * -0.3;
-            const slideshow = document.querySelector('.slideshow-container');
+            const slideshow = document.querySelector('.test-container');
             if (slideshow) {
                 slideshow.style.transform = `translateY(${rate}px)`;
             }
         });
-        
-        window.addEventListener('load', function() {
+
+        window.addEventListener('load', function () {
             document.body.style.opacity = '0';
             document.body.style.transition = 'opacity 0.5s ease';
             setTimeout(() => {
@@ -1123,4 +1401,5 @@ text-align: center;
         });
     </script>
 </body>
+
 </html>
