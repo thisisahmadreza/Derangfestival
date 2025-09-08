@@ -1,12 +1,24 @@
-<style>
-.category-card {
-    position: relative; /* Ensure the parent is positioned */
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Cards</title>
+    <style>
+        .category-card {
+            transition: transform 0.3s ease;
+            transform-origin: center;
+            isolation: isolate; /* Prevents neighboring cards from being affected */
+        }
 
-.category-card:hover {
-    position: absolute; /* Change position on hover */
-    z-index: 10; /* Bring the hovered card to the front */
-    transform: scale(1.1); /* Scale up the hovered card */
-    transition: transform 0.3s ease; /* Smooth transition */
-}
-</style>
+        .category-card:hover {
+            transform: scale(1.1); /* Scales up the hovered card */
+        }
+    </style>
+</head>
+<body>
+    <div class="category-card">Card 1</div>
+    <div class="category-card">Card 2</div>
+    <div class="category-card">Card 3</div>
+</body>
+</html>
