@@ -1,24 +1,1889 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category Cards</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>رویداد هنری دانشجویی - درنگ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .category-card {
-            transition: transform 0.3s ease;
-            transform-origin: center;
-            isolation: isolate; /* Prevents neighboring cards from being affected */
+        :root {
+            --bg-main: #ECECBB;
+            --accent: #E1AA36;
+            --primary: #239BA7;
+            --button-register: #D25D5D;
+            --white: #fff;
+            --text: #1d2020;
+            --navbar-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --navbar-bg: rgba(44, 44, 56, 0.84);
+            --menu-hover-bg: rgba(35, 155, 167, 0.22);
+            --register-btn-shadow: 0 8px 24px rgba(210, 93, 93, 0.13), 0 2px 8px rgba(35, 155, 167, 0.10);
+            --register-btn-glow: 0 0 0 4px rgba(210, 93, 93, 0.18);
         }
 
-        .category-card:hover {
-            transform: scale(1.1); /* Scales up the hovered card */
+        html,
+        body {
+            width: 100vw;
+            min-height: 100vh;
+            overscroll-behavior-x: contain;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 400;
+            color: var(--text);
+            background: var(--bg-main);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            left: 24px;
+            z-index: 1000;
+            padding: 0;
+            background: none;
+            box-shadow: none;
+            border: none;
+            display: flex;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .nav-container {
+            background: var(--navbar-bg);
+            box-shadow: var(--navbar-shadow);
+            border-radius: 36px;
+            padding: 0 35px;
+            min-height: 62px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            pointer-events: auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1002;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-hamburger {
+            display: none;
+            background: none;
+            border: none;
+            outline: none;
+            font-size: 2rem;
+            color: var(--white);
+            cursor: pointer;
+            position: absolute;
+            right: 2%;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1001;
+            padding: 0 16px 0 0;
+        }
+
+        @media (max-width:900px) {
+            .nav-hamburger {
+                display: block;
+            }
+
+            .logo {
+                margin-right: 38px;
+            }
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 24px;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 18px;
+            border-radius: 23px;
+            position: relative;
+            font-size: 1.1rem;
+            transition: background .2s, color .2s;
+            background: none;
+            border: none;
+            display: inline-block;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a:focus {
+            background: var(--menu-hover-bg);
+            color: var(--white);
+            border-radius: 23px;
+        }
+
+        @media (max-width:900px) {
+            .nav-menu a {
+                padding: 8px 12px;
+            }
+
+            .nav-menu a:hover,
+            .nav-menu a:focus {
+                padding: 8px 20px;
+                border-radius: 16px;
+            }
+        }
+
+        @media (max-width:600px) {
+            .nav-menu a {
+                padding: 7px 8px;
+            }
+
+            .nav-menu a:hover,
+            .nav-menu a:focus {
+                padding: 7px 13px;
+            }
+        }
+
+        .nav-register-btn {
+            background: var(--button-register);
+            color: var(--white);
+            border: none;
+            border-radius: 30px;
+            padding: 10px 28px;
+            font-weight: 900;
+            font-size: 1.13rem;
+            margin-right: 12px;
+            text-decoration: none;
+            transition: background .2s, color .2s, box-shadow .2s;
+            box-shadow: var(--register-btn-shadow);
+            z-index: 1020;
+            position: relative;
+            left: 2%;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 12px rgba(210, 93, 93, 0.17);
+        }
+
+        .nav-register-btn:hover,
+        .nav-register-btn:focus {
+            background: var(--accent);
+            color: var(--white);
+            box-shadow: var(--register-btn-glow);
+        }
+
+        @media (max-width:900px) {
+            .nav-menu {
+                display: none !important;
+            }
+
+            .logo {
+                margin-right: 38px;
+            }
+
+            .nav-container {
+                max-width: 98vw;
+            }
+        }
+
+        @media (max-width:600px) {
+            .nav-register-btn {
+                display: block;
+                margin-left: 0;
+                margin-right: 0;
+                font-size: 1.09rem;
+                padding: 9px 20px;
+                position: absolute;
+                left: 2%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .navbar {
+                right: 10px;
+                left: 10px;
+                top: 10px;
+            }
+
+            .nav-container {
+                padding: 0 18px;
+                min-height: 56px;
+            }
+
+            .nav-hamburger {
+                padding-right: 8px;
+            }
+        }
+
+        @media (max-width:400px) {
+            .nav-menu-mobile {
+                min-width: 100vw;
+                border-radius: 0;
+            }
+
+            .nav-register-btn {
+                left: 2%;
+            }
+
+            .navbar {
+                right: 2px;
+                left: 2px;
+                top: 2px;
+            }
+
+            .nav-container {
+                padding: 0 5px;
+            }
+
+            .nav-hamburger {
+                padding-right: 4px;
+            }
+        }
+
+        .nav-menu-mobile {
+            display: none;
+            flex-direction: column;
+            position: fixed;
+            top: 78px;
+            right: 24px;
+            background: var(--navbar-bg);
+            width: 78vw;
+            max-width: 350px;
+            min-width: 200px;
+            border-radius: 0 0 23px 23px;
+            box-shadow: var(--navbar-shadow);
+            padding: 28px 0 18px 0;
+            z-index: 1100;
+            animation: menuShow .27s cubic-bezier(.5, 1.9, .7, 1.05);
+        }
+
+        @keyframes menuShow {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .nav-menu-mobile li {
+            padding: 8px 28px;
+            border-bottom: 1px solid rgba(35, 155, 167, 0.09);
+        }
+
+        .nav-menu-mobile a {
+            color: var(--white);
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: block;
+            border-radius: 19px;
+            padding: 8px 0;
+            transition: background .2s, color .2s;
+        }
+
+        .nav-menu-mobile a:hover,
+        .nav-menu-mobile a:focus {
+            background: var(--menu-hover-bg);
+            color: var(--white);
+            border-radius: 15px;
+            padding: 8px 10px;
+        }
+
+        /* Divider Bar */
+        .section-divider {
+            width: 160px;
+            height: 3px;
+            background: var(--accent);
+            margin: 0 auto;
+            border-radius: 4px;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        /* Slideshow با انیمیشن تایپ جدید */
+        .slideshow-container {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            background: var(--primary);
+            background-image: url('https://raw.githubusercontent.com/thisisahmadreza/Derangfestival/refs/heads/main/image3.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .slideshow-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(35, 155, 167, 0.75) 0%, rgba(225, 170, 54, 0.35) 100%);
+            z-index: 1;
+        }
+
+        /* محتوای ثابت اسلایدشو */
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: var(--primary);
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .slide-title-image {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* اضافه کردن media queries برای موبایل */
+        @media (max-width: 768px) {
+            .slide-title-image {
+                max-width: 80vw;
+                /* 80 درصد عرض صفحه */
+                min-width: 450px;
+                /* حداقل عرض */
+            }
+        }
+
+        @media (max-width: 525px) {
+            .slide-title-image {
+                max-width: 90vw;
+                /* 90 درصد عرض صفحه */
+                min-width: 380px;
+                /* حداقل عرض کمتر */
+            }
+        }
+
+        @media (max-width: 400px) {
+            .slide-title-image {
+                max-width: 95vw;
+                /* 95 درصد عرض صفحه */
+                min-width: 350px;
+                /* حداقل عرض برای گوشی‌های کوچک */
+            }
+        }
+
+        /* متن متغیر با انیمیشن تایپ */
+        .slide-description {
+            font-size: 1.7rem;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            color: var(--bg-main);
+            text-shadow: 0 2px 8px var(--primary);
+            min-height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+        }
+
+        .typewriter-text {
+            border-left: 2px solid var(--accent);
+            padding-left: 5px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                border-color: var(--accent);
+            }
+
+            51%,
+            100% {
+                border-color: transparent;
+            }
+        }
+
+        .slide-btn,
+        .action-btn {
+            text-decoration: none;
+            padding: 18px 52px;
+            display: inline-block;
+            border-radius: 100px;
+            position: relative;
+            font-size: 1.16rem;
+            font-weight: bolder;
+            /* text-shadow: 0 2px 12px rgba(210, 93, 93, 0.18); */
+            display: inline-block;
+            border: 1px solid #ffffff4d;
+            background: linear-gradient(45deg, #c189051f, #db916d, #c189051f);
+            background-size: 200% 200%;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            text-shadow: 0 0 8px black;
+            transition: background-position 0.3s ease,
+                box-shadow 0.1s ease-in-out,
+                transform 0.3s ease-in-out;
+            background-position: 0% 0%;
+        }
+
+        .slide-btn:active,
+        .action-btn:active {
+            transform: scale(.97);
+        }
+
+        .slide-btn:hover,
+        .action-btn:hover,
+        .slide-btn:focus,
+        .action-btn:focus {
+            background-position: 100% 100%;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4),
+                0 0 15px rgba(138, 129, 116, 0.8),
+                0 0 30px rgba(174, 234, 220, 0.252);
+            transform: translateY(-5px);
+        }
+
+        .btn-animated {
+            animation: moveInBottom 5s ease-out;
+            animation-fill-mode: backwards;
+        }
+
+        @keyframes moveInBottom {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide-description {
+                font-size: 1.04rem;
+            }
+
+            .slide-btn,
+            .action-btn {
+                font-size: 1.08rem;
+                padding: 15px 30px;
+            }
+        }
+
+        @media (max-width: 525px) {
+            .slide-description {
+                font-size: 0.93rem;
+            }
+
+            .slide-content {
+                padding: 0 2vw;
+            }
+
+            .slide-btn,
+            .action-btn {
+                font-size: 1rem;
+                padding: 11px 10vw;
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 85px;
+            animation: bounce 2s infinite;
+        }
+
+        .mouse-icon {
+            width: 30px;
+            height: 50px;
+            border: 2px solid var(--accent);
+            border-radius: 15px;
+            position: relative;
+            margin-bottom: 0;
+            display: block;
+        }
+
+        .mouse-icon::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 2px;
+            animation: scroll 2s infinite;
+        }
+
+        .arrow-down {
+            color: var(--accent);
+            font-size: 22px;
+            margin-top: 8px;
+            display: block;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        @keyframes scroll {
+            0% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+        }
+
+        .about-wrapper {
+            padding: 0;
+            margin: 0;
+        }
+
+        .event-intro {
+            padding: 90px 50px 0px;
+            background: var(--bg-main);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            background-image: url('https://raw.githubusercontent.com/thisisahmadreza/Derangfestival/refs/heads/main/image1.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .event-intro::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(236, 236, 187, 0.77) 0%, rgba(225, 170, 54, 0.26) 100%);
+            z-index: 1;
+        }
+
+        .event-intro>* {
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-size: 2.3rem;
+            font-weight: 900;
+            margin-bottom: 28px;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        .about-title {
+            color: #2f2a20;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 2;
+            max-width: 720px;
+            margin: 0 auto 55px;
+            color: var(--text);
+        }
+
+        .intro-text-f {
+            font-size: 1.1rem;
+            line-height: 2;
+            max-width: 720px;
+            margin: 0 auto 55px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        /* تایم‌لاین داخل بخش درباره رویداد */
+        .timeline-panel {
+            background: transparent;
+            padding: 0 0 50px 0;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            max-width: 100%;
+        }
+
+        .timeline-track {
+            display: flex;
+            gap: 0;
+            background: none;
+            border-radius: 24px;
+            width: 90vw;
+            max-width: 1060px;
+            min-height: 140px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 1px 0px 12px 3px rgb(4 4 4 / 16%);
+            background-color: #f3e3c529;
+            border: 1px solid #ffffff29;
+            backdrop-filter: blur(6px);
+        }
+
+        .timeline-item {
+            flex: 1 1 180px;
+            min-width: 120px;
+            max-width: 1fr;
+            background: transparent;
+            color: #2f2a20;
+            position: relative;
+            transition: flex-basis 0.45s cubic-bezier(.6, 2, .6, 1), background 0.4s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            overflow: hidden;
+            z-index: 1;
+            border-radius: 0;
+            opacity: 0.9;
+            /* مقدار شفافیت دلخواه؛ کمتر یعنی شفاف‌تر */
+
+        }
+
+        .timeline-item:not(:last-child) {}
+
+        .timeline-year {
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 1.18rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-align: center;
+            margin: 0;
+            margin-bottom: 10px;
+            padding: 15px 0 0 0;
+            transition: color 0.3s;
+        }
+
+        .timeline-item:hover,
+        .timeline-item:focus {
+            flex-basis: 20%;
+            background: #7d8c66d6;
+            z-index: 2;
+        }
+
+        .timeline-item:hover .timeline-year,
+        .timeline-item:focus .timeline-year {
+            color: var(--bg-main);
+        }
+
+        .timeline-desc {
+            opacity: 0;
+            pointer-events: none;
+            max-height: 0;
+            transition: opacity 0.4s, max-height 0.4s;
+            text-align: center;
+            padding: 0 15px;
+            font-size: 1.02rem;
+        }
+
+        .timeline-item:hover .timeline-desc,
+        .timeline-item:focus .timeline-desc {
+            opacity: 1;
+            pointer-events: auto;
+            max-height: 180px;
+            transition-delay: 0.1s;
+        }
+
+        .timeline-desc h4 {
+            font-size: 1.08rem;
+            font-weight: 800;
+            color: #202020;
+            margin: 10px 0 7px 0;
+        }
+
+        .timeline-desc p {
+            margin: 0 0 7px 0;
+            color: var(--white);
+            font-size: 0.97rem;
+            line-height: 1.7;
+        }
+
+        @media (max-width:700px) {
+            .timeline-panel {
+                padding-bottom: 10px;
+            }
+
+            .timeline-track {
+                width: 100vw;
+                max-width: 100vw;
+                min-width: unset;
+                overflow-x: visible;
+                justify-content: space-between;
+                gap: 8px;
+                border-radius: 18px;
+                box-sizing: border-box;
+            }
+
+            .timeline-item {
+                flex: 1 1 0;
+                min-width: 0;
+                border-radius: 12px;
+                margin: 0 2px;
+            }
+
+            .timeline-year {
+                font-size: 0.97rem;
+                padding: 22px 0 0 0;
+                margin-bottom: 7px;
+            }
+
+            .timeline-desc h4 {
+                font-size: 0.97rem;
+            }
+
+            .timeline-desc p {
+                font-size: 0.87rem;
+            }
+        }
+
+        @media (max-width:480px) {
+            .timeline-track {
+                width: 99vw;
+                max-width: 99vw;
+                gap: 4px;
+            }
+
+            .timeline-year {
+                font-size: 0.78rem;
+                padding: 12px 0 0 0;
+            }
+
+            .timeline-desc h4 {
+                font-size: 0.83rem;
+            }
+
+            .timeline-desc p {
+                font-size: 0.73rem;
+            }
+        }
+
+        /* دسته‌بندی آثار */
+        .categories {
+            padding: 80px 50px;
+            background: var(--primary);
+            position: relative;
+            background-image: url('https://raw.githubusercontent.com/thisisahmadreza/Derangfestival/refs/heads/main/image2.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 2;
+        }
+
+        .categories::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(35, 155, 167, 0.80) 0%, rgba(225, 170, 54, 0.18) 100%);
+            z-index: 1;
+        }
+
+        .categories>* {
+            position: relative;
+            z-index: 2;
+        }
+
+        .categories .section-title {
+            color: var(--bg-main);
+            text-align: center;
+        }
+
+        .category-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1%;
+            row-gap: 20px;
+            max-width: 100%;
+            padding: 0 18px;
+            opacity: 0.9;
+        }
+
+
+        .category-card {
+            border-radius: 27px;
+            padding: 36px 22px;
+            text-align: center;
+            transition: background .2s, color .2s, box-shadow .2s, border .2s, transform .2s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            color: #ffffff;
+            flex: 0 0 24.24%;
+            max-width: 24.24%;
+            box-shadow: 1px 0px 12px 3px rgb(4 4 4 / 16%);
+            background-color: #867e55a8;
+            border: 1px solid #ffffff8f;
+            backdrop-filter: blur(54px);
+            transform: scale(1);
+            /* حالت پیش‌فرض */
+
+        }
+
+        @media (max-width:600px) {
+            .categories {
+                padding: 31px 3vw;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+                padding: 0 12px;
+            }
+
+            .category-card {
+                flex: 0 0 48%;
+                max-width: 48%;
+            }
+
+            .category-title {
+                font-size: 0.92rem;
+            }
+
+            .category-icon {
+                font-size: 1.55rem;
+            }
+        }
+
+        @media (max-width:400px) {
+            .category-grid {
+                padding: 0 6px;
+            }
+        }
+
+        .category-card:hover,
+        .category-card:focus {
+            background: var(--accent);
+            color: var(--white);
+            transform: scale(1.05);
+            /* کمتر از قبل - از 1.045 به 1.05 */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            /* سایه نرم‌تر */
+            z-index: 2;
+            /* جلوتر از بقیه */
+        }
+
+        .category-icon {
+            font-size: 2.6rem;
+            color: #dcdfb7;
+            margin-bottom: 15px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            /* انیمیشن نرم‌تر */
+            transform: scale(1) rotate(0deg);
+            /* حالت پیش‌فرض */
+        }
+
+        .category-card:hover .category-icon,
+        .category-card:focus .category-icon {
+            color: var(--white);
+            transform: scale(1.1) rotate(-5deg);
+            /* کمتر از قبل - از 1.14 و -8deg */
+
+        }
+
+        .category-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            /* انیمیشن نرم */
+
+        }
+
+        .category-card:hover .category-title,
+        .category-card:focus .category-title {
+            color: var(--white);
+        }
+
+        .category-desc {
+            color: var(--primary);
+            line-height: 1.6;
+            opacity: 0;
+            max-height: 0;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            /* انیمیشن نرم‌تر */
+        }
+
+        /* حذف تأثیر روی کارت‌های مجاور */
+        .category-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1%;
+            row-gap: 20px;
+            max-width: 100%;
+            padding: 0 18px;
+            opacity: 0.9;
+        }
+
+        /* اضافه کردن فاصله بین کارت‌ها تا از تداخل انیمیشن جلوگیری شود */
+        @media (min-width: 601px) {
+            .category-grid {
+                gap: 1.5%;
+                /* فاصله بیشتر */
+                row-gap: 25px;
+            }
+
+            .category-card {
+                flex: 0 0 23.5%;
+                /* کمی کوچک‌تر برای فاصله بهتر */
+                max-width: 23.5%;
+            }
+        }
+
+        .category-card:hover .category-desc,
+        .category-card:focus .category-desc {
+            opacity: 1;
+            max-height: 70px;
+            color: var(--white);
+        }
+
+        .action-section {
+            padding: 80px 50px;
+            background: var(--accent);
+            text-align: center;
+        }
+
+        .action-section .section-title {
+            color: var(--bg-main);
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            color: #202020;
+            font-weight: bolder;
+            border-radius: 100px;
+            font-size: 1.18rem;
+            padding: 18px 52px;
+            letter-spacing: 1.4px;
+            text-shadow: 0 2px 12px rgba(213, 200, 200, 0.3);
+            transition: background .2s, color .2s, box-shadow .2s, transform .13s;
+            border: none;
+            box-shadow: 1px 0px 12px 3px rgb(4 4 4 / 16%);
+            background-color: #ffffffbd;
+            border: 1px solid #ffffff29;
+        }
+
+        .action-btn:active {
+            transform: scale(.97);
+        }
+
+        .action-btn:hover,
+        .action-btn:focus {
+            background: linear-gradient(90deg, #45b4d0 60%, #45b4d0);
+            color: var(--white);
+            box-shadow: var(--register-btn-glow);
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            justify-content: center;
+            align-self: anchor-center;
+            text-decoration: none;
+            color: #ffffff;
+            border-radius: 100px;
+            font-size: 1.08rem;
+            padding: 20px 40px;
+            transition: background .2s, color .2s, border .2s, transform .13s;
+            letter-spacing: 1px;
+            box-shadow: 1px 0px 12px 3px rgb(4 4 4 / 16%);
+            background-color: #f3e3c529;
+            border: 1px solid #ffffff29;
+            backdrop-filter: blur(6px);
+        }
+
+        .contact-btn:hover,
+        .contact-btn:focus {
+            background: #322d2da3;
+            color: #fbcf6f;
+            border-color: #e0a74491;
+        }
+
+        @media (max-width:900px) {
+            .action-section {
+                padding: 40px 8vw;
+            }
+
+            .action-buttons {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width:600px) {
+            .action-section {
+                padding: 22px 2vw;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+
+            .action-btn {
+                font-size: 1.08rem;
+                padding: 15px 30px;
+            }
+
+            .contact-btn {
+                font-size: 1rem;
+                padding: 11px 10vw;
+                margin-top: 7px;
+            }
+        }
+
+        @media (max-width:525px) {
+            .action-btn {
+                font-size: 1rem;
+                padding: 11px 10vw;
+            }
+
+            .contact-btn {
+                font-size: 0.93rem;
+                padding: 10px 9vw;
+            }
+        }
+
+        /* درباره ما */
+        .about-us-section {
+            padding: 80px 50px;
+            background: var(--bg-main);
+            position: relative;
+            background-image:
+                linear-gradient(rgba(236, 236, 187, 0.8), rgba(225, 170, 54, 0.3)),
+                url('https://raw.githubusercontent.com/thisisahmadreza/Derangfestival/refs/heads/main/pattern.png');
+            background-repeat: repeat;
+            background-size: auto, 600px 600px;
+            background-position: center;
+            z-index: 2;
+
+        }
+
+        .about-us-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(236, 236, 187, 0.85) 0%, rgba(225, 170, 54, 0.25) 100%);
+            z-index: 1;
+        }
+
+        .about-us-section>* {
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-us-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-us-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            min-height: 400px;
+            direction: rtl;
+            /* اطمینان از راست به چپ بودن */
+
+        }
+
+        .about-us-text {
+            flex: 1;
+            order: 1;
+            /* همیشه در سمت راست */
+            padding-left: 20px;
+        }
+
+        .about-us-text .section-title {
+            font-size: 2.3rem;
+            font-weight: 900;
+            margin-bottom: 28px;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-align: right;
+        }
+
+        .about-us-description {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--text);
+            margin-bottom: 35px;
+            text-align: justify;
+            direction: rtl;
+
+        }
+
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(35, 155, 167, 0.3);
+            border: 2px solid transparent;
+            direction: rtl;
+        }
+
+        .telegram-btn:hover,
+        .telegram-btn:focus {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(35, 155, 167, 0.4);
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            border-color: var(--white);
+        }
+
+        .telegram-btn i {
+            font-size: 1.3rem;
+        }
+
+        .about-us-visual {
+            flex: 1;
+            order: 2;
+            /* همیشه در سمت چپ */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .logo-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .organization-logo {
+            width: 500px;
+            height: auto;
+            opacity: 0.45;
+            filter: drop-shadow(0 0 20px rgba(35, 155, 167, 0.3));
+            z-index: 1;
+            position: relative;
+        }
+
+        .floating-circle {
+            position: absolute;
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 4px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .circle-1 {
+            top: 120px;
+            right: 150px;
+            animation: float1 4s ease-in-out infinite;
+        }
+
+        .circle-2 {
+            bottom: 130px;
+            left: -200px;
+            animation: float2 4.5s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        @keyframes float1 {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+        }
+
+        @keyframes float2 {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(-3deg);
+            }
+        }
+
+
+        /* ریسپانسیو - تبلت */
+        @media (max-width: 900px) {
+            .about-us-section {
+                padding: 60px 30px;
+            }
+
+            .about-us-content {
+                gap: 40px;
+                flex-wrap: nowrap;
+            }
+
+            .about-us-text {
+                padding-right: 15px;
+                flex: 1.2;
+            }
+
+            .about-us-visual {
+                flex: 0.8;
+                padding: 30px 20px;
+            }
+
+            .logo-container {
+                width: 220px;
+                height: 220px;
+            }
+
+            .organization-logo {
+                width: 140px;
+            }
+
+            .floating-circle {
+                width: 65px;
+                height: 65px;
+            }
+
+            .about-us-text .section-title {
+                font-size: 2.3rem;
+            }
+        }
+
+        /* ریسپانسیو - موبایل (تصحیح شده) */
+        @media (max-width: 768px) {
+            .about-us-section {
+                padding: 50px 20px;
+                position: relative;
+                /* حذف پس‌زمینه اصلی در موبایل */
+            }
+
+            /* پس‌زمینه کل سکشن در موبایل */
+            .about-us-section::before {
+                background: linear-gradient(135deg, rgba(236, 236, 187, 0.95) 0%, rgba(225, 170, 54, 0.85) 100%),
+                    url('https://raw.githubusercontent.com/thisisahmadreza/Derangfestival/refs/heads/main/medart-logo.png');
+                background-size: auto, 250px auto;
+                background-position: center, center;
+                background-repeat: no-repeat, no-repeat;
+                opacity: 0.3;
+            }
+
+            .about-us-content {
+                flex-direction: column;
+                gap: 0;
+                min-height: auto;
+                direction: ltr;
+                position: relative;
+            }
+
+            /* حذف بخش visual در موبایل */
+            .about-us-visual {
+                display: none;
+            }
+
+            .about-us-text {
+                order: 1;
+                padding: 40px 20px;
+                text-align: center;
+                position: relative;
+                /* حذف پس‌زمینه از متن */
+                background: none;
+            }
+
+            /* حذف پوشش اضافی */
+            .about-us-text::before {
+                display: none;
+            }
+
+            .about-us-text .section-title {
+                font-size: 2.3rem;
+                text-align: center;
+                margin-bottom: 25px;
+                position: relative;
+                z-index: 3;
+            }
+
+            .about-us-description {
+                font-size: 1.1rem;
+                line-height: 1.8;
+                text-align: center;
+                margin-bottom: 30px;
+                direction: rtl;
+                position: relative;
+                z-index: 3;
+            }
+
+            .telegram-btn {
+                font-size: 1.5rem;
+                padding: 14px 28px;
+                position: relative;
+                z-index: 3;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .about-us-section {
+                padding: 40px 15px;
+            }
+
+            .about-us-section::before {
+                background-size: auto, 180px auto;
+            }
+
+            .about-us-text {
+                padding: 30px 15px;
+            }
+
+            .about-us-text .section-title {
+                font-size: 2.3rem;
+                margin-bottom: 20px;
+            }
+
+            .about-us-description {
+                font-size: 1.1rem;
+                line-height: 1.7;
+                margin-bottom: 25px;
+            }
+
+            .telegram-btn {
+                font-size: 1.5rem;
+                padding: 12px 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-us-section {
+                padding: 30px 10px;
+            }
+
+            .about-us-section::before {
+                background-size: auto, 150px auto;
+            }
+
+            .about-us-text {
+                padding: 25px 10px;
+            }
+
+            .about-us-text .section-title {
+                font-size: 2.3rem;
+                margin-bottom: 18px;
+            }
+
+            .about-us-description {
+                font-size: 1.1rem;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+
+            .telegram-btn {
+                font-size: 1.5rem;
+                padding: 10px 20px;
+                gap: 8px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .about-us-section::before {
+                background-size: auto, 120px auto;
+            }
+
+            .about-us-text {
+                padding: 20px 8px;
+            }
+
+            .about-us-text .section-title {
+                font-size: 2.3rem;
+            }
+
+            .about-us-description {
+                font-size: 1.1rem;
+            }
+
+            .telegram-btn {
+                font-size: 1.5rem;
+                padding: 8px 16px;
+            }
+        }
+
+        .footer {
+            background: #04384f;
+            padding: 50px 50px 22px;
+            color: var(--bg-main);
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 38px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.15rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 18px;
+        }
+
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: #1d2020;
+            font-size: 1.2rem;
+            transition: all .2s;
+            border: 2px solid var(--bg-main);
+        }
+
+        .social-link:hover,
+        .social-link:focus {
+            background: var(--bg-main);
+            color: #2a2a2a;
+            border: 2px solid var(--bg-main);
+            transform: scale(1.08) rotate(-8deg);
+            box-shadow: 0 8px 24px #80888866;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 34px;
+            padding-top: 12px;
+            border-top: 1px solid var(--accent);
+            color: var(--bg-main);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width:900px) {
+            .footer {
+                padding: 26px 3vw 12px;
+            }
+
+            .footer-content {
+                gap: 11px;
+            }
+        }
+
+        @media (max-width:600px) {
+            .footer {
+                padding: 12px 2vw 7px;
+            }
+
+            .footer-content {
+                gap: 5px;
+            }
+
+            .footer-section h3 {
+                font-size: 0.91rem;
+            }
+        }
+
+        .full-width {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
         }
     </style>
 </head>
+
 <body>
-    <div class="category-card">Card 1</div>
-    <div class="category-card">Card 2</div>
-    <div class="category-card">Card 3</div>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <button class="nav-hamburger" id="navHamburger" aria-label="باز کردن منو">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="#" class="logo">درنگ</a>
+            <ul class="nav-menu">
+                <li><a href="#home">خانه</a></li>
+                <li><a href="#about">درباره رویداد</a></li>
+                <li><a href="#timeline">برنامه زمانی</a></li>
+                <li><a href="#categories">دسته‌بندی آثار</a></li>
+                <li><a href="#contact">تماس</a></li>
+            </ul>
+            <a href="#register" class="nav-register-btn">ثبت نام</a>
+        </div>
+        <ul class="nav-menu-mobile" id="navMenuMobile" style="display: none;">
+            <li><a href="#home">خانه</a></li>
+            <li><a href="#about">درباره رویداد</a></li>
+            <li><a href="#timeline">برنامه زمانی</a></li>
+            <li><a href="#categories">دسته‌بندی آثار</a></li>
+            <li><a href="#contact">تماس</a></li>
+        </ul>
+    </nav>
+
+    <!-- Slideshow با انیمیشن تایپ جدید -->
+    <section id="home" class="slideshow-container slider">
+        <div class="slide-content">
+            <img src="https://raw.githubusercontent.com/thisisahmadreza/Derangfestival/refs/heads/main/derang-3-2-logo.png"
+                alt="عنوان رویداد" class="slide-title-image" />
+            <p class="slide-description">
+                <span class="typewriter-text" id="typewriterText"></span>
+            </p>
+            <a href="#about" class="slide-btn btn btn-white btn-animated">کشف کنید</a>
+        </div>
+        <div class="scroll-indicator">
+            <span class="mouse-icon"></span>
+            <span class="arrow-down"><i class="fas fa-chevron-down"></i></span>
+        </div>
+    </section>
+
+    <!-- Divider between slideshow and about -->
+    <div class="section-divider"></div>
+
+    <!-- درباره رویداد و تایم‌لاین -->
+    <div class="about-wrapper slider" id="about">
+        <section class="event-intro  full-width">
+            <h2 class="section-title about-title">درباره رویداد</h2>
+            <p class="intro-text">
+                درنگ یک ابتکار هنری سالانه از سوی انجمن مدآرت علوم پزشکی اصفهان است که می‌کوشد تا برای نخستین بار فضایی
+                برای دیده شدن دانشجویان هنرمند در اصفهان، فراهم کند. این فستیوال مشتمل بر سه بخش کلی فراخوان ارسال آثار،
+                نمایشگاه و اختتامیه می‌باشد. تمرکز درنگ، بر پیوند روح هنر و درمان است که هرسال با یک محوریت خاص، اقدام
+                به نمایش آثار دانشجویان هنرمند می‌کند. فقدان فاطمه (سارا) صدیقی صابر، دانشجوی ترم ۲ پزشکی اصفهان، ما را
+                بر آن داشت که درنگ ۱۴۰۴ را برای سارا برگزار کنیم.
+            </p>
+            <section id="timeline" class="timeline-panel">
+                <div class="timeline-track">
+                    <div class="timeline-item">
+                        <div class="timeline-year">فراخوان آثار</div>
+                        <div class="timeline-desc">
+                            <h4>۱۸ شهریور تا ۴ مهر</h4>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">داوری آثار</div>
+                        <div class="timeline-desc">
+                            <h4>۵ الی ۱۵ مهر</h4>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">نمایشگاه و اختتامیه</div>
+                        <div class="timeline-desc">
+                            <h4>۱۸ مهر</h4>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    </div>
+    </section>
+    </section>
+    </div>
+
+    <!-- Divider between about and categories -->
+    <div class="section-divider"></div>
+
+    <!-- دسته‌بندی آثار -->
+    <section id="categories" class="categories full-width slider">
+        <h2 class="section-title">فراخوان آثار</h2>
+        <p class="intro-text-f">
+            شرکت‌کنندگان می‌توانند آثار خود مرتبط با محوریت رویداد را در دسته‌بندی‌های ذیل ارسال کنند. برای مشاهده
+            شیوه‌نامه ارسال آثار و نکات تکمیلی به کاتالوگ فراخوان مراجعه کنید.
+        </p>
+        <div class="category-grid">
+            <div class="category-card" tabindex="0">
+                <i class="fas fa-palette category-icon"></i>
+                <h3 class="category-title">هنرهای تجسمی</h3>
+                <p class="category-desc">نقاشی، مجسمه‌سازی، گرافیک، عکاسی و سایر آثار بصری که با دست ساخته شده‌اند.</p>
+            </div>
+            <div class="category-card" tabindex="0">
+                <i class="fas fa-theater-masks category-icon"></i>
+                <h3 class="category-title">هنرهای نمایشی</h3>
+                <p class="category-desc">تئاتر، اجرای موسیقی و سایر هنرهای اجرایی که تعامل مستقیم با مخاطب دارند.</p>
+            </div>
+            <div class="category-card" tabindex="0">
+                <i class="fas fa-feather-alt category-icon"></i>
+                <h3 class="category-title">آثار ادبی</h3>
+                <p class="category-desc">شعر، داستان کوتاه، مقاله ادبی و سایر آثار نوشتاری خلاقانه و هنری.</p>
+            </div>
+            <div class="category-card" tabindex="0">
+                <i class="fas fa-video category-icon"></i>
+                <h3 class="category-title">آثار تصویری</h3>
+                <p class="category-desc">فیلم کوتاه، مستند، موشن گرافیک، انیمیشن و پوستر سایر آثار تصویری و سینمایی.</p>
+            </div>
+        </div>
+        <p> </p>
+        <h2 class="section-title"></h2>
+        <h2 class="section-title"> </h2>
+        <h2 class="section-title"> </h2>
+        <h2 class="section-title">آماده شرکت هستید؟</h2>
+        <div class="action-buttons">
+            <a href="https://survey.porsline.ir/s/n0QVZ13c" class="action-btn btn btn-white btn-animated" tabindex="0">ثبت نام و ارسال اثر</a>
+            <a href="https://t.me/Medart_support" class="contact-btn btn btn-white btn-animated" tabindex="0">سوالی
+                داری؟</a>
+        </div>
+    </section>
+
+    <!-- Action Section -->
+
+    <!-- درباره ما -->
+    <section id="about-us" class="about-us-section full-width slider">
+        <div class="about-us-container">
+            <div class="about-us-content">
+                <div class="about-us-text">
+                    <h2 class="section-title">درباره ما</h2>
+                    <p class="about-us-description">
+                        انجمن علمی مدآرت دانشگاه علوم پزشکی اصفهان، پلی میان هنر و علم پزشکی است. ما معتقدیم که هنر و
+                        خلاقیت می‌توانند ابزارهای قدرتمندی برای بهبود کیفیت آموزش پزشکی و ارتقاء سلامت جامعه باشند. تیم
+                        ما متشکل از دانشجویان پرشور و متخصصان حوزه‌های مختلف هنری است که با همت و تلاش مشترک، رویدادهای
+                        فرهنگی و هنری متنوعی را برگزار می‌کنیم.
+                    </p>
+                    <a href="https://t.me/medart_club" class="telegram-btn" target="_blank">
+                        <i class="fab fa-telegram"></i>
+                        مدآرت در تلگرام
+                    </a>
+                </div>
+                <div class="about-us-visual">
+                    <div class="logo-container">
+                        <img src="https://raw.githubusercontent.com/thisisahmadreza/Derangfestival/refs/heads/main/medart-logo.png"
+                            alt="لوگوی مدآرت" class="organization-logo">
+                        <div class="floating-circle circle-1">
+                            <img src="https://raw.githubusercontent.com/thisisahmadreza/Derangfestival/refs/heads/main/medart1.jpg"
+                                alt="عضو تیم 1" class="team-photo">
+                        </div>
+                        <div class="floating-circle circle-2">
+                            <img src="https://raw.githubusercontent.com/thisisahmadreza/Derangfestival/refs/heads/main/medart2.jpg"
+                                alt="عضو تیم 2" class="team-photo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer id="contact" class="footer slider">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>تماس با ما</h3>
+                <p>📧 derangfestivalinfo@gmail.com</p>
+                <p>📞 ۰۲۱-۱۲۳۴۵۶۷۸</p>
+                <p>📍 اصفهان، خیابان هزارجریب، دانشگاه علوم پزشکی اصفهان، دانشکده پزشکی</p>
+            </div>
+            <div class="footer-section">
+                <h3>لینک‌های مفید</h3>
+                <p><a href="#" style="color: var(--bg-main); text-decoration: none;">راهنمای ثبت نام</a></p>
+                <p><a href="#" style="color: var(--bg-main); text-decoration: none;">قوانین و مقررات</a></p>
+                <p><a href="#" style="color: var(--bg-main); text-decoration: none;">سوالات متداول</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>ما را دنبال کنید</h3>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/medart_club/" class="social-link" tabindex="0"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://t.me/medart_club" class="social-link" tabindex="0"><i
+                            class="fab fa-telegram"></i></a>
+                    <a href="#" class="social-link" tabindex="0"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link" tabindex="0"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© ۱۴۰۴ رویداد هنری درنگ. تمامی حقوق برای انجمن مدآرت محفوظ است.</p>
+        </div>
+    </footer>
+
+    <script>
+        // همه اسکریپت‌های قبلی
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        const navHamburger = document.getElementById('navHamburger');
+        const navMenuMobile = document.getElementById('navMenuMobile');
+        let navMenuOpen = false;
+        navHamburger.addEventListener('click', function (e) {
+            e.stopPropagation();
+            navMenuOpen = !navMenuOpen;
+            navMenuMobile.style.display = navMenuOpen ? 'flex' : 'none';
+            navHamburger.innerHTML = navMenuOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        document.body.addEventListener('click', function (e) {
+            if (navMenuOpen && !navMenuMobile.contains(e.target) && !navHamburger.contains(e.target)) {
+                navMenuMobile.style.display = 'none';
+                navHamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                navMenuOpen = false;
+            }
+        });
+
+        navMenuMobile.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                navMenuMobile.style.display = 'none';
+                navHamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                navMenuOpen = false;
+            });
+        });
+
+        // انیمیشن تایپ رایتر جدید
+        const texts = [
+            "نخستین فستیوال هنری دانشگاه علوم پزشکی اصفهان",
+            "درنگ، مرهمی است از جنس نگاه و تامل!",
+            "نگاهی از جنس هنر شما ..."
+        ];
+
+        let currentTextIndex = 0;
+        let currentCharIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 80;
+        let deleteSpeed = 50;
+        let pauseTime = 2000;
+
+        const typewriterElement = document.getElementById('typewriterText');
+
+        function typeWriter() {
+            const currentText = texts[currentTextIndex];
+
+            if (isDeleting) {
+                typewriterElement.textContent = currentText.substring(0, currentCharIndex - 1);
+                currentCharIndex--;
+
+                if (currentCharIndex === 0) {
+                    isDeleting = false;
+                    currentTextIndex = (currentTextIndex + 1) % texts.length;
+                    setTimeout(typeWriter, 500);
+                    return;
+                }
+                setTimeout(typeWriter, deleteSpeed);
+            } else {
+                typewriterElement.textContent = currentText.substring(0, currentCharIndex + 1);
+                currentCharIndex++;
+
+                if (currentCharIndex === currentText.length) {
+                    isDeleting = true;
+                    setTimeout(typeWriter, pauseTime);
+                    return;
+                }
+                setTimeout(typeWriter, typeSpeed);
+            }
+        }
+
+        // شروع انیمیشن تایپ رایتر پس از لود صفحه
+        window.addEventListener('load', function () {
+            setTimeout(typeWriter, 1000);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        window.addEventListener('scroll', function () {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.3;
+            const slideshow = document.querySelector('.test-container');
+            if (slideshow) {
+                slideshow.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        window.addEventListener('load', function () {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
 </body>
+
 </html>
