@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>رویداد هنری دانشجویی - درنگ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -22,6 +21,24 @@
             --register-btn-glow: 0 0 0 4px rgba(210, 93, 93, 0.18);
         }
 
+        @font-face {
+            font-family: 'Pofak';
+            src: url('https://raw.githubusercontent.com/thisisahmadreza/Derangfestival/refs/heads/main/Pofak-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Edameh';
+            src: url('https://raw.githubusercontent.com/thisisahmadreza/Derangfestival/refs/heads/main/edamehWeb-ExtraBlack.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .title-font {
+            font-family: 'Edameh';
+        }
+
         html,
         body {
             width: 100vw;
@@ -31,7 +48,7 @@
         }
 
         body {
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'Pofak', sans-serif;
             font-weight: 400;
             color: var(--text);
             background: var(--bg-main);
@@ -1584,7 +1601,7 @@
             <button class="nav-hamburger" id="navHamburger" aria-label="باز کردن منو">
                 <i class="fas fa-bars"></i>
             </button>
-            <a href="#" class="logo">درنگ</a>
+            <a href="#" class="title-font logo">درنگ</a>
             <ul class="nav-menu">
                 <li><a href="#home">خانه</a></li>
                 <li><a href="#about">درباره رویداد</a></li>
@@ -1592,7 +1609,7 @@
                 <li><a href="#categories">دسته‌بندی آثار</a></li>
                 <li><a href="#contact">تماس</a></li>
             </ul>
-            <a href="https://survey.porsline.ir/s/n0QVZ13c" class="nav-register-btn">ثبت نام</a>
+            <a href="https://survey.porsline.ir/s/n0QVZ13c" class="title-font nav-register-btn">ثبت نام</a>
         </div>
         <ul class="nav-menu-mobile" id="navMenuMobile" style="display: none;">
             <li><a href="#home">خانه</a></li>
@@ -1625,7 +1642,7 @@
     <!-- درباره رویداد و تایم‌لاین -->
     <div class="about-wrapper slider" id="about">
         <section class="event-intro  full-width">
-            <h2 class="section-title about-title">درباره رویداد</h2>
+            <h2 class="title-font section-title about-title">درباره رویداد</h2>
             <p class="intro-text">
                 درنگ یک ابتکار هنری سالانه از سوی انجمن مدآرت علوم پزشکی اصفهان است که می‌کوشد تا برای نخستین بار فضایی
                 برای دیده شدن دانشجویان هنرمند در اصفهان، فراهم کند. این فستیوال مشتمل بر سه بخش کلی فراخوان ارسال آثار،
@@ -1665,7 +1682,7 @@
 
     <!-- دسته‌بندی آثار -->
     <section id="categories" class="categories full-width slider">
-        <h2 class="section-title">فراخوان آثار</h2>
+        <h2 class="title-font section-title">فراخوان آثار</h2>
         <p class="intro-text-f">
             شرکت‌کنندگان می‌توانند آثار خود مرتبط با محوریت رویداد را در دسته‌بندی‌های ذیل ارسال کنند. برای مشاهده
             شیوه‌نامه ارسال آثار و نکات تکمیلی به کاتالوگ فراخوان مراجعه کنید.
@@ -1696,9 +1713,10 @@
         <h2 class="section-title"></h2>
         <h2 class="section-title"> </h2>
         <h2 class="section-title"> </h2>
-        <h2 class="section-title">آماده شرکت هستید؟</h2>
+        <h2 class="title-font section-title">آماده شرکت هستید؟</h2>
         <div class="action-buttons">
-            <a href="https://survey.porsline.ir/s/n0QVZ13c" class="action-btn btn btn-white btn-animated" tabindex="0">ثبت نام و ارسال اثر</a>
+            <a href="https://survey.porsline.ir/s/n0QVZ13c" class="action-btn btn btn-white btn-animated"
+                tabindex="0">ثبت نام و ارسال اثر</a>
             <a href="https://t.me/Medart_support" class="contact-btn btn btn-white btn-animated" tabindex="0">سوالی
                 داری؟</a>
         </div>
@@ -1711,7 +1729,7 @@
         <div class="about-us-container">
             <div class="about-us-content">
                 <div class="about-us-text">
-                    <h2 class="section-title">درباره ما</h2>
+                    <h2 class="title-font section-title">درباره ما</h2>
                     <p class="about-us-description">
                         انجمن علمی مدآرت دانشگاه علوم پزشکی اصفهان، پلی میان هنر و علم پزشکی است. ما معتقدیم که هنر و
                         خلاقیت می‌توانند ابزارهای قدرتمندی برای بهبود کیفیت آموزش پزشکی و ارتقاء سلامت جامعه باشند. تیم
